@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { createElement } from "react";
+import { useState } from "react";
 
-function App() {
+const Display = (props) => {
+  return <div>{props.counter}</div>;
+};
+const Hello = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Hello {props.name}</p>
     </div>
   );
-}
+};
+
+const Add = () => {
+  const [index, setIndex] = useState(0);
+  function handleClick() {
+    setIndex(index + 1);
+  }
+
+  return (
+    <>
+      <button onClick={handleClick}>Next</button>
+      <Display counter={index} />
+    </>
+  );
+};
+
+const App = () => {
+  const name = "Ahmed";
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello name="Ali" />
+      <Hello name={name} />
+      <Add />
+    </div>
+  );
+};
+
+// function App() {
+//   return (
+//     <div>
+//       <p>Hello world!</p>
+//     </div>
+//   );
+// }
 
 export default App;
